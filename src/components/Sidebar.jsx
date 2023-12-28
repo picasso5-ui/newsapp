@@ -1,19 +1,30 @@
-import {Nav} from "react-bootstrap"
 
-const Sidebar = () => {
+const Sidebar = ({setCategory}) => {
     return ( 
-
-        <div>
-            <h2>Categories</h2>
-           <Nav className="flex-column">
-           <Nav.Link href="#action1">World</Nav.Link>
-           <Nav.Link href="#action2">Business</Nav.Link>
-           <Nav.Link href="#action2">Technology</Nav.Link>
-           <Nav.Link href="#action2">Sports</Nav.Link>
-           <Nav.Link href="#action2">Entertainment</Nav.Link>
-           </Nav>
-        </div>
-     )
+        <nav style={{cursor:"pointer"}}>
+            <ul className="navbar-nav">
+            <li className="nav-item mb-3">
+            <div onClick={()=>setCategory("technology")}>Technology</div>
+            </li>
+              <li className="nav-item mb-3">
+                <div onClick={()=>setCategory("business")}>Business</div>
+                </li>
+              <li className="nav-item mb-3">
+              <div onClick={()=>setCategory("health")}>Health</div>
+              </li>
+              <li className="nav-item mb-3">
+                <div onClick={()=>setCategory("sports")}>Sports</div>
+                </li>
+              <li className="nav-item mb-3">
+                <div onClick={()=>setCategory("science")}>Science</div>
+                </li>
+              <li className="nav-item mb-3">
+                <div onClick={()=>setCategory("entertainment")}>Entertainment</div>
+                </li>
+            </ul>
+        
+      </nav>
+    )
 }
  
 export default Sidebar;
