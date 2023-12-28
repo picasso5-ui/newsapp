@@ -1,7 +1,7 @@
 
 const Sidebar = ({setCategory}) => {
     return ( 
-        <nav style={{cursor:"pointer"}}>
+        <nav style={{cursor:"pointer"}} className="fw-bold py-5 text-dark  ">
             <ul className="navbar-nav">
             <li className="nav-item mb-3">
             <div onClick={()=>setCategory("technology")}>Technology</div>

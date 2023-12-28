@@ -53,7 +53,7 @@ const NewsList = ({ category }) => {
                     
                   </Card.Text>
 
-                  <a href={article?.url && article.url} target="_blank">
+                  <a href={article?.url && article.url} target="_blank" className="text-warning">
                     Read More
                   </a>
                 </Card.Body>

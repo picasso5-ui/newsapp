@@ -8,13 +8,13 @@ const Hero = () =>{
 
    return(
        <>
-       <Container fluid className="mt-4 ">
+       <Container fluid  >
          <Row>
-           <Col xs={12} md={3}>
+           <Col xs={12} md={3} >
               <Sidebar setCategory={setCategory}/>
            </Col>
-           <Col>
-             <h3 className="text-center">Latest<span className="badge bg-danger">News</span></h3>
+           <Col xs={12} md={9}>
+             <h3 className="text-center mt-3">Latest<span className="badge bg-warning">News</span></h3>
              <NewsList category={category} />
            </Col>
          </Row>
