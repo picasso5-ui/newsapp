@@ -16,7 +16,7 @@ const NewsList = ({articles,currentPage,loading,setCurrentPage }) => {
 const handlePageClick =(pageNumber)=>{
   onPageChange(pageNumber);
 } 
- const totalArticles = articles.length
+ const totalArticles = articles?.length
  const totalPages = Math.ceil(totalArticles / pageSize);
  const startIndex = (currentPage - 1) * pageSize;
  const endIndex = startIndex + pageSize;
@@ -33,7 +33,7 @@ const handlePageClick =(pageNumber)=>{
           <div className="text-center mt-5">
             <div className="spinner-border" role="status"></div>
           </div>
-        ) : (
+        ) :(
           currentArticles?.map((article, index) => (
             <Col key={index} xs={12} md={6} lg={4}>
               <Card

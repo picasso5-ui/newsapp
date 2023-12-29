@@ -4,8 +4,9 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavBar({handleSearch,searchTerm,setSearchTerm}) {
-   
+function NavBar({searchQuery,handleSearchInputChange}) {
+ 
+
 
   return (
     <Navbar expand="lg" bg="dark" data-bs-theme="dark">
@@ -21,14 +22,14 @@ function NavBar({handleSearch,searchTerm,setSearchTerm}) {
          
           
           </Nav>
-          <Form onSubmit={handleSearch} className="d-flex">
+          <Form  className="d-flex" >
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-              value={searchTerm}
-              onChange={(e)=>setSearchTerm(e.target.value)}
+              value={searchQuery}
+              onChange={handleSearchInputChange}
             />
             <Button type="submit" variant="outline-warning">Search</Button>
           </Form>

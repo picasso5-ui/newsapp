@@ -6,68 +6,41 @@ import Footer from "./components/Footer"
 
 function App() {
   const [category,setCategory] = useState("general")
-  const [searchTerm, setSearchTerm] = useState('');
   const [currentPage,setCurrentPage] = useState(1)
-
-   
-    
-  const handleSearch = (e) => {
-   
-   
-  };
-;
-
   const [articles, setArticle] = useState([]);
-  const [loading, setIsLoading] = useState(true);
-
+  const [loading, setIsLoading] = useState(false);
+  const [searchQuery,setsearchQuery] = useState("")
   useEffect(() => {
-    // Fetch data based on category
-    const fetchNewsByCategory = () => {
-      setIsLoading(true);
-      try {
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=8d233ce53f7a461cb5f7494755c15a4c`;
-        fetch(url)
-          .then((res) => res.json())
-          .then((data) => {
-            setArticle(data.articles);
-            setIsLoading(false);
-          });
-      } catch (error) {
-        console.log(error, "error occurred");
-        setIsLoading(false);
-      }
-    };
-  
-    // Fetch data based on search term
-    const fetchNewsBySearchTerm = () => {
-      setIsLoading(true);
-      try {
-        let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&q=${searchTerm}&apiKey=8d233ce53f7a461cb5f7494755c15a4c`;
-        fetch(url)
-          .then((res) => res.json())
-          .then((data) => {
-            setArticle(data.articles);
-            setIsLoading(false);
-          });
-      } catch (error) {
-        console.log(error, "error occurred");
-        setIsLoading(false);
-      }
-    };
-  
-    // Call the appropriate fetch function based on changes
-    if (searchTerm) {
-      fetchNewsBySearchTerm();
-    } else {
-      fetchNewsByCategory();
+    setIsLoading(true);
+
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=8d233ce53f7a461cb5f7494755c15a4c`;
+
+    if (searchQuery) {
+      url = `https://newsapi.org/v2/everything?q=${searchQuery}&apiKey=8d233ce53f7a461cb5f7494755c15a4c`;
     }
-  }, [category, searchTerm]);
-  
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setArticle(data.articles);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error(error, "error occurred");
+        setIsLoading(false);
+      });
+  }, [category, searchQuery]);
+
+
+  const handleSearchInputChange = (event) => {
+    setsearchQuery(event.target.value);
+  };
+
   return (
     <div className="App">
         <NavBar
-         searchTerm={searchTerm}
-         setSearchTerm={setSearchTerm}
+        searchQuery={searchQuery}
+        handleSearchInputChange={handleSearchInputChange}
          />
         <Hero 
         category={category}
