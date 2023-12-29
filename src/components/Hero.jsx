@@ -1,10 +1,9 @@
 import {useState} from 'react'
-import {Container,Row,Col,Badge} from "react-bootstrap";
+import {Container,Row,Col} from "react-bootstrap";
 import NewsList from "./NewsList";
 import Sidebar from "./Sidebar";
 
-const Hero = () =>{
-  const [category,setCategory] = useState("general")
+const Hero = ({category,setCategory,currentPage,setCurrentPage,articles}) =>{
 
    return(
        <>
@@ -15,7 +14,12 @@ const Hero = () =>{
            </Col>
            <Col xs={12} md={9}>
              <h3 className="text-center mt-3">Latest<span className="badge bg-warning">News</span></h3>
-             <NewsList category={category} />
+             <NewsList 
+             category={category} 
+             currentPage={currentPage}
+             articles={articles}
+             setCurrentPage={setCurrentPage}
+              />
            </Col>
          </Row>
        

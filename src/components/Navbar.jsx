@@ -4,7 +4,9 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-function NavBar() {
+function NavBar({handleSearch,searchTerm,setSearchTerm}) {
+   
+
   return (
     <Navbar expand="lg" bg="dark" data-bs-theme="dark">
       <Container fluid>
@@ -19,14 +21,16 @@ function NavBar() {
          
           
           </Nav>
-          <Form className="d-flex">
+          <Form onSubmit={handleSearch} className="d-flex">
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              value={searchTerm}
+              onChange={(e)=>setSearchTerm(e.target.value)}
             />
-            <Button variant="outline-warning">Search</Button>
+            <Button type="submit" variant="outline-warning">Search</Button>
           </Form>
         </Navbar.Collapse>
       </Container>
